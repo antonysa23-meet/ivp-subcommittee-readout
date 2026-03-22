@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>McMurtry IVP | Subcommittee Readout</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #F4F2ED;
+    color: #2D3748;
+    line-height: 1.65;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    background: #1B2A4A;
+    padding: 44px 40px 38px;
+    margin: 0 -24px 44px;
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #C4963C;
+  }
+  .header h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  .header .subtitle {
+    font-size: 0.95rem;
+    color: #B8C4D6;
+    font-weight: 400;
+  }
+  .header .meta {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: #8B96A8;
+  }
+
+  /* Committee Section */
+  .committee-section {
+    margin-bottom: 36px;
+  }
+
+  .committee-card {
+    background: #FFFFFF;
+    border: 1px solid #E0DCD4;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .committee-header {
+    background: #1B2A4A;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .committee-header h2 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  .committee-header .heads {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #B8C4D6;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  .committee-body {
+    padding: 24px 28px 28px;
+  }
+
+  /* Description */
+  .description {
+    color: #4A5568;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    line-height: 1.72;
+  }
+
+  /* Sub-headings */
+  .sub-heading {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #C4963C;
+    margin-bottom: 10px;
+    margin-top: 24px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #EDE9E0;
+  }
+  .sub-heading:first-child { margin-top: 0; }
+
+  /* Responsibilities */
+  .responsibilities {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+  .responsibilities li {
+    padding: 5px 0 5px 20px;
+    position: relative;
+    font-size: 0.88rem;
+    color: #374151;
+  }
+  .responsibilities li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 13px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #C4963C;
+  }
+
+  /* Deliverables */
+  .deliverables {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media (max-width: 680px) {
+    .deliverables { grid-template-columns: 1fr; }
+  }
+  .deliverable {
+    background: #FAF8F5;
+    border: 1px solid #EDE9E0;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 0.84rem;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .deliverable .check {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #C4963C;
+    flex-shrink: 0;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: #E0DCD4;
+  }
+  .timeline-item {
+    position: relative;
+    padding: 6px 0 16px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #C4963C;
+    background: #FFFFFF;
+  }
+  .timeline-date {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #1B2A4A;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .timeline-task {
+    font-size: 0.86rem;
+    color: #4A5568;
+    margin-top: 2px;
+  }
+
+  /* Note / inline callout (subtle) */
+  .note {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: #FAF8F5;
+    border-left: 3px solid #C4963C;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.84rem;
+    color: #4A5568;
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #E0DCD4;
+    color: #9CA3AF;
+    font-size: 0.78rem;
+  }
+  .footer strong {
+    color: #6B7280;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>IVP Subcommittee Readout</h1>
+    <div class="subtitle">McMurtry College | Deliverables, Responsibilities & Timelines</div>
+    <div class="meta">Prepared for Antony Saleh, Internal Vice President 2026-27</div>
+  </div>
+
+  <!-- ==================== AMENITIES ==================== -->
+  <div class="committee-section">
+    <div class="committee-card">
+      <div class="committee-header">
+        <div>
+          <h2>Amenities</h2>
+          <div class="heads">Heads: Gideon Dawson, Jonathan Goldfeder</div>
+        </div>
+      </div>
+      <div class="committee-body">
+        <div class="description">
+          The most operationally critical IVP committee. Manages the $14,000 H&D Ambiance Fund for college-wide improvements, maintains all shared spaces, and handles tech/AV setup for events. Split into three functional areas: Ambiance Fund, Upkeep, and Tech.
+        </div>
+
+        <div class="sub-heading">Core Responsibilities</div>
+        <ul class="responsibilities">
+          <li>Research, propose, and purchase improvements via the Ambiance Fund ($14K from H&D)</li>
+          <li>Gather Murt feedback (Google Forms, office hours) to guide Ambiance proposals</li>
+          <li>Maintain common spaces: game room, music room, TV room, gym, kitchens, Yurt</li>
+          <li>Tech Division: AV setup (speakers, mics, projectors) for committee events</li>
+          <li>Coordinate with Jackie (College Coordinator) on orders and installations</li>
+        </ul>
+
+        <div class="sub-heading">Key Deliverables</div>
+        <div class="deliverables">
+          <div class="deliverable"><span class="check"></span>Ambiance Fund proposal spreadsheet (with item links and prices)</div>
+          <div class="deliverable"><span class="check"></span>Murt feedback survey for improvement ideas</div>
+        </div>
+
+        <div class="sub-heading">Timeline</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">August / September</div>
+            <div class="timeline-task">Kickoff meetings. Survey Murts for improvement ideas. Begin space audits.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">September / October</div>
+            <div class="timeline-task">Research items and pricing. Bi-weekly meetings to build the Ambiance Fund proposal. Meet with Jackie before submitting.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">October / November</div>
+            <div class="timeline-task">Share draft proposal with EC and Magisters for feedback. Iterate and finalize.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">End of Fall Semester</div>
+            <div class="timeline-task">Submit final Ambiance Fund request to H&D. Begin ordering approved items.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Spring Semester</div>
+            <div class="timeline-task">Install purchased items. Ongoing upkeep and tech support for events. Lock away valuables before summer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CULINARY ==================== -->
+  <div class="committee-section">
+    <div class="committee-card">
+      <div class="committee-header">
+        <div>
+          <h2>Culinary</h2>
+          <div class="heads">Heads: Sophia Orr, Sanjana Katti</div>
+        </div>
+      </div>
+      <div class="committee-body">
+        <div class="description">
+          One of the biggest IVP budgets. Hosts recurring food events that bring Murts together. Committee members function primarily as volunteers for events; heads coordinate planning, collabs, and supply purchasing. Large roster through the GroupMe for volunteer sign-ups.
+        </div>
+
+        <div class="sub-heading">Core Responsibilities</div>
+        <ul class="responsibilities">
+          <li>Organize and run Sundae Sunday (recurring tradition)</li>
+          <li>Baker 13 defense: provide cookies every time</li>
+          <li>Collaborate with other committees for FITQs and cultural events</li>
+          <li>Coordinate volunteer sign-ups for events (service hours for participants)</li>
+          <li>Maintain kitchen supplies: dish soap, sponges (funded via Amenities/FUNd, not Culinary budget)</li>
+          <li>New committee member onboarding meetings at start of each semester</li>
+        </ul>
+
+        <div class="sub-heading">Key Deliverables</div>
+        <div class="deliverables">
+          <div class="deliverable"><span class="check"></span>Semesterly event calendar with Sundae Sunday dates</div>
+          <div class="deliverable"><span class="check"></span>Collab events with Environmental (Sustainable Sundae), cultural committees</div>
+          <div class="deliverable"><span class="check"></span>Baker 13 defense prep for every occurrence</div>
+          <div class="deliverable"><span class="check"></span>Budget request submitted during budgeting cycle</div>
+        </div>
+
+        <div class="sub-heading">Timeline</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Spring (Before O-Week)</div>
+            <div class="timeline-task">Submit budget request for the upcoming academic year.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">August (O-Week)</div>
+            <div class="timeline-task">Recruit members. Onboarding meeting to share event ideas and set culture.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">September Onward</div>
+            <div class="timeline-task">Begin Sundae Sundays (recurring). Coordinate collab events with other committees.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Throughout Semester</div>
+            <div class="timeline-task">Baker 13 defense cookies on every Baker 13 night. FITQ collabs as scheduled.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Budget Season (Fall)</div>
+            <div class="timeline-task">Submit fall/spring budget request. Advocate at Budget Town Hall.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">January (Spring Start)</div>
+            <div class="timeline-task">Spring kickoff meeting. Resume Sundae Sundays and plan spring events and collabs.</div>
+          </div>
+        </div>
+
+        <div class="note">
+          Heads typically run everything themselves rather than delegating to members. Consider discussing with heads whether to shift toward more member involvement. Ensure new heads are trained by outgoing heads; a lot happens behind the scenes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ENVIRONMENTAL ==================== -->
+  <div class="committee-section">
+    <div class="committee-card">
+      <div class="committee-header">
+        <div>
+          <h2>Environmental</h2>
+          <div class="heads">Heads: H&D Eco-Reps (TBD)</div>
+        </div>
+      </div>
+      <div class="committee-body">
+        <div class="description">
+          Unique structure: committee heads are H&D-selected Eco-Reps (paid position). They have their own $1,000 Green Fund from H&D, which is why they receive almost no Murt budget. Very autonomous; they report to their H&D supervisors and run their own meetings. The IVP role here is mostly oversight and connecting them with other committees for collaborations.
+        </div>
+
+        <div class="sub-heading">Core Responsibilities</div>
+        <ul class="responsibilities">
+          <li>Sustainable Sundae Sundays (tradition, collab with Culinary)</li>
+          <li>Environmental FITQs and sustainability-themed events</li>
+          <li>Organize trips to Rice Village Farmer's Market</li>
+          <li>Represent McMurtry at campus-wide Sustainability Fair</li>
+          <li>Promote McMurtry as the most sustainable college on campus</li>
+        </ul>
+
+        <div class="sub-heading">Key Deliverables</div>
+        <div class="deliverables">
+          <div class="deliverable"><span class="check"></span>Green Fund spending plan ($1K from H&D)</div>
+          <div class="deliverable"><span class="check"></span>Sustainable Sundae Sundays each semester</div>
+          <div class="deliverable"><span class="check"></span>Sustainability Fair booth and participation</div>
+          <div class="deliverable"><span class="check"></span>At least one Environmental FITQ per semester</div>
+        </div>
+
+        <div class="sub-heading">Timeline</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">August / September</div>
+            <div class="timeline-task">Eco-Reps selected by H&D. Recruit committee members. Plan fall events.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Fall Semester</div>
+            <div class="timeline-task">Sustainable Sundaes, Farmer's Market trips, Environmental FITQ, Sustainability Fair.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Spring Semester</div>
+            <div class="timeline-task">Continue events. Collab with Culinary and other committees. Earth Day programming.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MIS ==================== -->
+  <div class="committee-section">
+    <div class="committee-card">
+      <div class="committee-header">
+        <div>
+          <h2>McMurtry Innovation Space (MIS)</h2>
+          <div class="heads">Heads: Sebastian Molina, Jonathan Goldfeder</div>
+        </div>
+      </div>
+      <div class="committee-body">
+        <div class="description">
+          The only makerspace of its kind at any Rice college. Offers woodworking tools, 3D printing, CAD software, electronics, whiteboard wall, and projector. Managed through H&D with a separate email (mcminnovationspace@gmail.com). Has an unused ~$2,000 budget (CFUND C53599) that needs investigation. This committee needs more attention and elevation.
+        </div>
+
+        <div class="sub-heading">Core Responsibilities</div>
+        <ul class="responsibilities">
+          <li>Maintain and organize the MIS space (tools, 3D printers, computers, supplies)</li>
+          <li>Create and maintain equipment wishlist for purchases</li>
+          <li>Manage MIS email, software passwords, and equipment key box (code: 2178)</li>
+          <li>Coordinate with H&D general manager on space management</li>
+        </ul>
+
+        <div class="sub-heading">Key Deliverables</div>
+        <div class="deliverables">
+          <div class="deliverable"><span class="check"></span>MIS space cleanup and organization</div>
+          <div class="deliverable"><span class="check"></span>Equipment wishlist and spending plan</div>
+          <div class="deliverable"><span class="check"></span>Investigate and unlock the ~$2K CFUND budget (C53599)</div>
+        </div>
+
+        <div class="sub-heading">Timeline</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">August / September</div>
+            <div class="timeline-task">Deep clean and inventory the space. Onboard members. Figure out the CFUND budget situation with H&D.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">October / November</div>
+            <div class="timeline-task">Build equipment wishlist. Promote MIS to the college.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Spring Semester</div>
+            <div class="timeline-task">Continue maintaining the space. Collaborate with Arts committee. Expand awareness to non-Murts.</div>
+          </div>
+        </div>
+
+        <div class="note">
+          This committee has huge untapped potential; no other college has a space like this. Prioritize figuring out the $2K budget and elevating the committee. Check the M16 files in the MIS email for original constitution and structure.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WEBSITE ==================== -->
+  <div class="committee-section">
+    <div class="committee-card">
+      <div class="committee-header">
+        <div>
+          <h2>Website</h2>
+          <div class="heads">Heads: Clin Shaiju, Lilly Wu</div>
+        </div>
+      </div>
+      <div class="committee-body">
+        <div class="description">
+          Re-established committee responsible for mcmurtry.rice.edu. Handles general upkeep, content updates, and a planned major visual/UX revamp. The site needs updated information, better navigation, and more Murt pride. Open to members with coding (HTML/CSS/JS/React/Next) or design skills.
+        </div>
+
+        <div class="sub-heading">Core Responsibilities</div>
+        <ul class="responsibilities">
+          <li>Keep all website information current (people, events, committees, O-Week)</li>
+          <li>Coordinate with O-Week coords to update freshman info before summer assignments</li>
+          <li>Plan and execute visual/UX revamp of the site</li>
+          <li>Add more photos, Murt pride, and improved navigation</li>
+          <li>Maintain hosting and technical infrastructure</li>
+        </ul>
+
+        <div class="sub-heading">Key Deliverables</div>
+        <div class="deliverables">
+          <div class="deliverable"><span class="check"></span>O-Week pages updated before summer (coordinate with coords)</div>
+          <div class="deliverable"><span class="check"></span>Committee and people pages kept current each semester</div>
+          <div class="deliverable"><span class="check"></span>Visual redesign plan and execution</div>
+          <div class="deliverable"><span class="check"></span>New photo content from college events</div>
+        </div>
+
+        <div class="sub-heading">Timeline</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Spring (Before Summer)</div>
+            <div class="timeline-task">Update O-Week pages with new theme, coords, and group info before freshmen get assignments.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">August (O-Week)</div>
+            <div class="timeline-task">Ensure site is fully current for incoming freshmen. Recruit new members.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">September / November</div>
+            <div class="timeline-task">Update people and committee pages. Begin redesign sprints. Photograph events for content.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Spring Semester</div>
+            <div class="timeline-task">Continue redesign. Prep O-Week pages for next cycle. Ongoing content updates.</div>
+          </div>
+        </div>
+
+        <div class="note">
+          Key timing: O-Week info must be updated before freshmen get college assignments in late spring/early summer. Coordinate with O-Week coords for their timeline. The website folder in the IVP drive has relevant files.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== McEXPEDITIONS ==================== -->
+  <div class="committee-section">
+    <div class="committee-card">
+      <div class="committee-header">
+        <div>
+          <h2>McExpeditions</h2>
+          <div class="heads">Heads: Nicholas Ortiz, William Mena &nbsp;[need to email current committee heads]</div>
+        </div>
+      </div>
+      <div class="committee-body">
+        <div class="description">
+          New committee created in 2025-26. Organizes group outings around Houston so Murts can explore the city together and build community. Has the largest budget of all IVP committees. Fall budget is typically larger; spring budget is smaller due to Beer Bike. Also aims to revive the McFloat tradition (charter bus river rafting in San Antonio).
+        </div>
+
+        <div class="sub-heading">Core Responsibilities</div>
+        <ul class="responsibilities">
+          <li>Plan and execute group outings around Houston (Dave and Busters, Galveston, etc.)</li>
+          <li>Revive McFloat tradition: spring semester river rafting trip to San Antonio</li>
+          <li>Handle logistics: transportation, headcounts, budgeting for each trip</li>
+          <li>Promote events and manage sign-ups</li>
+          <li>Partner with other committees for cost-sharing on larger events</li>
+        </ul>
+
+        <div class="sub-heading">Key Deliverables</div>
+        <div class="deliverables">
+          <div class="deliverable"><span class="check"></span>Fall outing schedule (2-3 trips minimum)</div>
+          <div class="deliverable"><span class="check"></span>Spring McFloat / river rafting trip</div>
+          <div class="deliverable"><span class="check"></span>Budget breakdown per event</div>
+          <div class="deliverable"><span class="check"></span>Post-event surveys for future planning</div>
+        </div>
+
+        <div class="sub-heading">Timeline</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Current Spring Semester</div>
+            <div class="timeline-task">McFloat event: charter bus river rafting trip to San Antonio. Begin planning with outgoing committee heads.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">August / September</div>
+            <div class="timeline-task">Onboard new heads and recruit members. Plan fall outing calendar. Budget allocation.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">October / December</div>
+            <div class="timeline-task">Execute fall outings (2-3 trips). Collect feedback. Plan spring.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">January / February</div>
+            <div class="timeline-task">Plan spring outings with reduced budget. Begin McFloat logistics (charter bus, venue).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">March / April</div>
+            <div class="timeline-task">Execute spring outings. McFloat trip (ideally late March or April before finals).</div>
+          </div>
+        </div>
+
+        <div class="note">
+          This committee needs IVP involvement almost like a third committee head, especially for leading events. Spring budget is smaller because of Beer Bike, so get creative with low-cost outings and partner with other committees.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <strong>McMurtry College</strong> | Internal Vice President 2026-27<br>
+    Source: IVP Transition Doc, mcmurtry.rice.edu, mcmurtryivp@gmail.com Drive
+  </div>
+
+</div>
+</body>
+</html>
